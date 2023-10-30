@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 10-10-2023 a las 23:56:36
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Host: 127.0.0.1
+-- Generation Time: Oct 30, 2023 at 08:14 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,36 +18,36 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `tienda`
+-- Database: `tienda`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `categoria`
+-- Table structure for table `categoria`
 --
 
 CREATE TABLE `categoria` (
   `ID_categoria` int(11) NOT NULL,
   `TIPO_DE_PRENDA` varchar(45) NOT NULL,
-  `DETALLE` varchar(255) NOT NULL
+  `DETALLE` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `categoria`
+-- Dumping data for table `categoria`
 --
 
 INSERT INTO `categoria` (`ID_categoria`, `TIPO_DE_PRENDA`, `DETALLE`) VALUES
-(27, 'REMERAS', 'Conjunto de remeras versátiles y cómodas para cualquier ocasión. ¡Estilo y comodidad en uno!'),
-(28, 'PANTALONES', 'Pantalones versátiles para cualquier look. Comodidad y estilo en uno.'),
-(31, 'BUZOS', 'Buzos cómodos y cálidos para días frescos. Elige tu estilo favorito.'),
-(32, 'CAMPERAS', 'Camperas de moda para mantenerte abrigado con estilo.'),
-(35, 'JEANS', 'Jeans de calidad para un look clásico y duradero.');
+(1, 'REMERAS', 'Conjunto de remeras versátiles y cómodas'),
+(2, 'MEDIAS', 'lindas medias, solo viene una'),
+(11, 'CAMPERAS', 'Camperas de moda para mantenerte abrigado con'),
+(12, 'PANTALON', 'Pantalones versátiles para cualquier look'),
+(13, 'BUZOS', 'Comodos y calidos para dias frescos');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `producto`
+-- Table structure for table `producto`
 --
 
 CREATE TABLE `producto` (
@@ -59,104 +59,114 @@ CREATE TABLE `producto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `producto`
+-- Dumping data for table `producto`
 --
 
 INSERT INTO `producto` (`ID_producto`, `ID_categoria_fk`, `TIPO`, `TALLE`, `PRECIO`) VALUES
-(21, 31, 'OVERSIZE', 'XL', 3000),
-(22, 31, 'DEPORTIVO', 'XXL', 2000),
-(23, 31, 'OVERSIZE', 'XL', 3000),
-(24, 31, 'DEPORTIVO', 'XXL', 2000),
-(25, 31, 'CREWNECK', 'L', 6999),
-(26, 31, 'CREWNECK', 'L', 6999),
-(27, 27, 'REMERA POLO', 'M', 7999),
-(28, 27, 'REMERA MANGA LARGA', 'S', 3999),
-(29, 27, 'REMERA POLO', 'M', 7999),
-(30, 27, 'REMERA MANGA LARGA', 'S', 3999),
-(31, 28, 'CARGO', 'M', 6950),
-(32, 28, 'DEPORTIVO', 'XL', 6700),
-(33, 28, 'CARGO', 'M', 6950),
-(34, 28, 'DEPORTIVO', 'XL', 6700),
-(35, 35, 'JEAN RECTO', 'XL', 7300),
-(36, 35, 'JEAN RASGADO', 'M', 9699),
-(37, 35, 'JEAN RECTO', 'XL', 7300),
-(38, 35, 'JEAN RASGADO', 'M', 9699),
-(39, 32, 'BOMBER', 'L', 8900),
-(40, 32, 'CAMPERA DE CUERO', 'XXL', 7999),
-(41, 32, 'BOMBER', 'L', 8900),
-(42, 32, 'CAMPERA DE CUERO', 'XXL', 7999),
-(43, 31, 'OVERSIZE', 'XL', 3423);
+(3, 1, 'REMERA POLO', 'L', 3000),
+(4, 1, 'REMERA POLO', 'XXL', 2000),
+(5, 1, 'REMERA MANGA LARGA', 'XXL', 1000),
+(7, 1, 'REMERA MANGA LARGA', 'XL', 3000),
+(8, 1, 'REMERA POLO', 'L', 1000),
+(9, 1, 'OVERZISE', 'XXL', 2000),
+(10, 1, 'REMERA MANGA LARGA', 'L', 3000),
+(11, 1, 'REMERA MANGA LARGA', 'XL', 2000),
+(12, 1, 'REMERA POLO', 'L', 1000),
+(13, 1, 'CREWNECK', 'S', 1000),
+(14, 1, 'CREWNECK', 'XL', 2000),
+(15, 1, 'REMERA MANGA LARGA', 'XXL', 2000),
+(21, 11, 'CAMPERA DE CUERO', 'S', 8500),
+(22, 11, 'CAMPERA DE CUERO', 'M', 8500),
+(23, 11, 'CAMPERA DE CUERO', 'L', 8500),
+(24, 11, 'CAMPERA DE CUERO', 'S', 8500),
+(26, 11, 'BOMBER', 'XL', 8500),
+(27, 11, 'CARGO', 'S', 90),
+(28, 11, 'CAMPERA DE CUERO', 'XL', 8500),
+(29, 11, 'CAMPERA DE CUERO', 'S', 8500),
+(30, 11, 'BOMBER', 'M', 8500),
+(31, 11, 'CAMPERA DE CUERO', 'L', 8500),
+(32, 11, 'CAMPERA', 'XL', 8500),
+(33, 12, 'CARGO', 'S', 9900),
+(34, 12, 'DEPORTIVO', 'M', 9900),
+(36, 12, 'DEPORTIVO', 'XL', 9900),
+(37, 12, 'CARGO', 'S', 9900),
+(46, 2, 'TRES CUARTOS', 'S', 500),
+(47, 13, 'OVERSIZE', 'XXL', 10500),
+(48, 2, 'TRES CUARTOS', 'S', 500),
+(51, 13, 'OVERSIZE', 'M', 10500),
+(52, 2, 'TRES CUARTOS', 'S', 90),
+(53, 1, 'OVERSIZE', 'M', 8888);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `email` varchar(250) NOT NULL,
+  `password` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `email`, `password`) VALUES
-(1, 'admin', '$2y$10$lAoakw4EB09qWqarXbx.WeAP2WZOHiqo.5r1AwQIJLaF/sAbweF5y');
+(1, 'webadmin', '$2y$10$JC8JHq4ObWBWmvsF7IyM/OfZ51H0LKQ3epRwCw5AlQPDW3P6TSsLe');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `categoria`
+-- Indexes for table `categoria`
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`ID_categoria`);
 
 --
--- Indices de la tabla `producto`
+-- Indexes for table `producto`
 --
 ALTER TABLE `producto`
   ADD PRIMARY KEY (`ID_producto`),
   ADD KEY `ID_categoria_fk` (`ID_categoria_fk`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `categoria`
+-- AUTO_INCREMENT for table `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `ID_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `ID_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
--- AUTO_INCREMENT de la tabla `producto`
+-- AUTO_INCREMENT for table `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `ID_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `ID_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `producto`
+-- Constraints for table `producto`
 --
 ALTER TABLE `producto`
   ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`ID_categoria_fk`) REFERENCES `categoria` (`ID_categoria`);
