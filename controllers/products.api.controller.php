@@ -1,6 +1,6 @@
 <?php
-require_once("./app/models/products.api.model.php");
-require_once("./app/views/product.api.view.php");
+require_once("./models/products.api.model.php");
+require_once("./views/product.api.view.php");
 
 class ProductsApiController {
     private $model;

@@ -1,6 +1,6 @@
 <?php
 require_once("./libs/router.php");
-require_once("./api/controllers/products.api.controller.php");
+require_once("./controllers/products.api.controller.php");
 
 define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
 
