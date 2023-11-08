@@ -1,6 +1,7 @@
 API REST para el recurso de productos
 Una API REST sencilla para manejar un CRUD de productos
 
+
 Importar la base de datos
 importar desde PHPMyAdmin (o cualquiera) database/tienda.sql
 Pueba con postman
