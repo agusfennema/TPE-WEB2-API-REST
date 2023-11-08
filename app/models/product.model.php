@@ -1,4 +1,3 @@
-Se usó un 90 % del almacenamiento … Si tu almacenamiento se acaba, no podrás crear archivos, editarlos o subirlos. Obtén 100 GB de almacenamiento por US$ 1,99 US$ 0,49 al mes durante 3 meses.
 <?php
 
 class productModel {

@@ -19,6 +19,7 @@ class productController {
         return json_decode($this->data);
     }
 
+    // FUNCION PARA MOSTRAR TODOS LOS PRODUCTOS ASC O DESC
     public function showAll($params = NULL){
       $products=$this->model->getAll();
         if (isset($_GET['sortby']) && isset($_GET['order'])){
@@ -35,9 +36,9 @@ class productController {
         $products = $this->model->getAll();
         }
         return $this->view->response($products, 200);
-        
       } 
 
+      // FUNCION PARA MOSTRAR POR ID
       public function showProducts($params = NULL) {
         $ID_producto = $params[':ID'];
         $products  = $this->model->getProductById($ID_producto);
@@ -47,28 +48,26 @@ class productController {
             $this->view->response("El producto buscado con el id=$ID_producto no existe", 404);
       }
 
-      public function addProduct($params = NULL){ //añadir un nuevo campeon
-        
+      // FUNCION PARA AGREGAR PRODUCTO
+      public function addProduct($params = NULL){ 
         $productsbyid = $this->getData();  
-        
         if( empty($productsbyid->ID_categoria_fk) || empty($productsbyid->TIPO)|| empty($productsbyid->TALLE)|| empty($productsbyid->PRECIO)){
             $this->view->response("Complete los datos", 400);
         }
         else {
             $ID_producto = $this->model->insertProduct($productsbyid->ID_categoria_fk, $productsbyid->TIPO, $productsbyid->TALLE, $productsbyid->PRECIO);
             $productsbyid = $this->model->getProductById($ID_producto);
-            $this->view->response($productsbyid, 201);
+            $this->view->response("el producto con el id=$ID_producto se agregó correctamente", 201);
         }
       }
 
 
       public function deleteProduct($params = NULL) {
         $ID_producto = $params[':ID'];
-      
         $products  = $this->model->getProductById($ID_producto);
       if($products){
         $this->model->deleteProduct($ID_producto);
-        $this->view->response($products);
+        $this->view->response("el producto con el id=$ID_producto se elimino correctamente", 200);
       }
       else
         $this->view->response("el producto con el id=$ID_producto no existe", 404);
