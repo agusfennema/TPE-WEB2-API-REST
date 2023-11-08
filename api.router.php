@@ -1,25 +1,18 @@
 <?php
-require_once("./libs/router.php");
-require_once("./controllers/products.api.controller.php");
+require_once './libs/Router.php';
+require_once './app/controllers/product.controller.php';
 
-define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
-
-// recurso solicitado
-$resource = $_GET["resource"];
-
-// método utilizado
-$method = $_SERVER["REQUEST_METHOD"];
-
-// instancia el router
+// crea el router
 $router = new Router();
 
-// arma la tabla de ruteo
-// $router->addRoute($resource: string, $httpMethod: string, $controller: string, $methodController: string);
-$router->addRoute("products", "GET", "ProductsApiController", "getProducts");
-$router->addRoute("products/:ID", "GET", "ProductsApiController", "getProductsById");
-$router->addRoute("products", "POST", "ProductsApiController", "addProduct");
-$router->addRoute("products", "PUT", "ProductsApiController", "updateProduct");
+// tabla de ruteo
+$router->addRoute('product', 'GET', 'productController', 'showAll');
+$router->addRoute('product/:ID', 'GET', 'productController', 'showProducts');
+$router->addRoute('product/:ID', 'DELETE', 'productController', 'deleteProduct');
+$router->addRoute('product', 'POST', 'productController', 'addProduct');
+$router->addRoute('product/:ID', 'PUT', 'productController', 'updateProduct'); 
 
+//$router->addRoute('reviews', 'PUT', 'Reviewcontroller', 'editreview');
 
-// rutea
-$router->route($resource, $method);
+// ejecuta la ruta (sea cual sea)
+$router->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);
