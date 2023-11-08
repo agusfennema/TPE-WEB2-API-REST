@@ -14,7 +14,5 @@ $router->addRoute('products', 'POST', 'productController', 'addProduct');
 $router->addRoute('products/:ID', 'PUT', 'productController', 'updateProduct'); 
 $router->addRoute('products/token', 'GET', 'UserApiController', 'getToken');
 
-//$router->addRoute('reviews', 'PUT', 'Reviewcontroller', 'editreview');
-
 // ejecuta la ruta (sea cual sea)
 $router->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);
