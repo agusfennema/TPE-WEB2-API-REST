@@ -1,4 +1,5 @@
 <?php
+require_once 'config.php';
 require_once './libs/Router.php';
 require_once './app/controllers/product.controller.php';
 
@@ -11,6 +12,7 @@ $router->addRoute('products/:ID', 'GET', 'productController', 'showProducts');
 $router->addRoute('products/:ID', 'DELETE', 'productController', 'deleteProduct');
 $router->addRoute('products', 'POST', 'productController', 'addProduct');
 $router->addRoute('products/:ID', 'PUT', 'productController', 'updateProduct'); 
+$router->addRoute('products/token', 'GET', 'UserApiController', 'getToken');
 
 //$router->addRoute('reviews', 'PUT', 'Reviewcontroller', 'editreview');
 

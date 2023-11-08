@@ -15,12 +15,10 @@ class productController {
         $this->data = file_get_contents("php://input");
     }
 
-    // todo lo que llega lo pasa a json
     private function getData() {
         return json_decode($this->data);
     }
 
-    // FUNCION PARA MOSTRAR LOS PRODUCTOS CON ORDEN ASC O DESC
     public function showAll($params = NULL){
       $products=$this->model->getAll();
         if (isset($_GET['sortby']) && isset($_GET['order'])){
@@ -40,7 +38,6 @@ class productController {
         
       } 
 
-    // FUNCION PARA MOSTRAR PRODUCTO BY ID
       public function showProducts($params = NULL) {
         $ID_producto = $params[':ID'];
         $products  = $this->model->getProductById($ID_producto);
@@ -50,9 +47,10 @@ class productController {
             $this->view->response("El producto buscado con el id=$ID_producto no existe", 404);
       }
 
-      // FUNCION PARA AGREGAR PRODUCTO 
       public function addProduct($params = NULL){ //añadir un nuevo campeon
+        
         $productsbyid = $this->getData();  
+        
         if( empty($productsbyid->ID_categoria_fk) || empty($productsbyid->TIPO)|| empty($productsbyid->TALLE)|| empty($productsbyid->PRECIO)){
             $this->view->response("Complete los datos", 400);
         }
@@ -63,19 +61,19 @@ class productController {
         }
       }
 
-      // FUNCION PARA BORRAR PRODUCTO
+
       public function deleteProduct($params = NULL) {
         $ID_producto = $params[':ID'];
+      
         $products  = $this->model->getProductById($ID_producto);
       if($products){
         $this->model->deleteProduct($ID_producto);
         $this->view->response($products);
       }
       else
-      $this->view->response("el producto con el id=$ID_producto no existe", 404);
-        }
+        $this->view->response("el producto con el id=$ID_producto no existe", 404);
+      }
 
-    // FUNCION PARA EDITAR/ACTUALIZAR PRODUCTO
         public function updateProduct($params = null){
           $ID_producto = $params[':ID'];
           $product = $this->model->getProductById($ID_producto);
