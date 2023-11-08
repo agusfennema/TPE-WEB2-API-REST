@@ -6,11 +6,11 @@ require_once './app/controllers/product.controller.php';
 $router = new Router();
 
 // tabla de ruteo
-$router->addRoute('product', 'GET', 'productController', 'showAll');
-$router->addRoute('product/:ID', 'GET', 'productController', 'showProducts');
-$router->addRoute('product/:ID', 'DELETE', 'productController', 'deleteProduct');
-$router->addRoute('product', 'POST', 'productController', 'addProduct');
-$router->addRoute('product/:ID', 'PUT', 'productController', 'updateProduct'); 
+$router->addRoute('products', 'GET', 'productController', 'showAll');
+$router->addRoute('products/:ID', 'GET', 'productController', 'showProducts');
+$router->addRoute('products/:ID', 'DELETE', 'productController', 'deleteProduct');
+$router->addRoute('products', 'POST', 'productController', 'addProduct');
+$router->addRoute('products/:ID', 'PUT', 'productController', 'updateProduct'); 
 
 //$router->addRoute('reviews', 'PUT', 'Reviewcontroller', 'editreview');
 

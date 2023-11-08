@@ -1,5 +1,5 @@
 <?php
-// configuracion del router 
+
 class Route {
     private $url;
     private $verb;
