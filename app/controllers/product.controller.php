@@ -61,7 +61,7 @@ class productController {
         }
       }
 
-
+      // FUNCION BORRAR PRODUCTO
       public function deleteProduct($params = NULL) {
         $ID_producto = $params[':ID'];
         $products  = $this->model->getProductById($ID_producto);
@@ -73,6 +73,7 @@ class productController {
         $this->view->response("el producto con el id=$ID_producto no existe", 404);
       }
 
+      // FUNCION ACTUALIZAR PRODUCTO
         public function updateProduct($params = null){
           $ID_producto = $params[':ID'];
           $product = $this->model->getProductById($ID_producto);

@@ -10,6 +10,7 @@ class ApiView {
         echo json_encode($data);
     }
 
+    // RESPUESTAS / CODIGOS DE ERROR
     private function _requestStatus($code){
         $status = array(
           200 => "OK",

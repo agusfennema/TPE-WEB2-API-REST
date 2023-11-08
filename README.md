@@ -15,6 +15,7 @@ Verbo DELETE: http://localhost/tp2-apirest/api/products
 
 Endpoint POST
 Verbo POST: http://localhost/tp2-apirest/api/products
+(al momento de agregar un nuevo producto, no es necesario ingresar el ID_producto, ya que es autoincremental)
 
 Endpoint PUT
 Verbo PUT: http://localhost/tp2-apirest/api/products
