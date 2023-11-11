@@ -3,13 +3,13 @@ require_once './app/models/product.model.php';
 require_once './app/views/api.view.php';
 
 class productController {
-    private $model;
-    private $view;
+    private $productModel;
+    private $viewApi;
     private $data;
 
     public function __construct() {
-        $this->model = new productModel();
-        $this->view = new ApiView();
+        $this->productModel = new productModel();
+        $this->viewApi = new ApiView();
         
         // lee el body del request
         $this->data = file_get_contents("php://input");
@@ -19,61 +19,59 @@ class productController {
         return json_decode($this->data);
     }
 
-    // FUNCION PARA MOSTRAR TODOS LOS PRODUCTOS ASC O DESC
-    public function showAll($params = NULL){
-      $products=$this->model->getAll();
-        if (isset($_GET['sortby']) && isset($_GET['order'])){
-            if($_GET['order'] == 'ASC'){
-                if($_GET['sortby'] == 'id')
-                $products = $this->model->orderASC();//?sortby=id&order=ASC
-                }
-            elseif ($_GET['order'] == 'DESC'){
-                if($_GET['sortby'] == 'id')
-                $products = $this->model->orderDESC();//?sortby=id&order=DESC
-            }
-        }
-        else{
-        $products = $this->model->getAll();
-        }
-        return $this->view->response($products, 200);
-      } 
 
-      // FUNCION PARA MOSTRAR POR ID
+    public function showAll($params = NULL){
+      if (isset($_GET['sortby']) && isset($_GET['order'])) {
+        if (($_GET['sortby'] == 'ID_producto' || $_GET['sortby'] == 'TIPO'|| $_GET['sortby'] == 'TALLE'|| $_GET['sortby'] == 'PRECIO')
+        &&($_GET['order']== 'ASC' || $_GET['order']== 'DESC')){
+          $products = $this->productModel->sortbyorder($_GET['sortby'], $_GET['order']);
+          return $this->viewApi->response($products, 200);
+        }else{
+          return $this->viewApi->response("Los campos son inválidos", 400);
+        }
+      } 
+      else{
+        $products = $this->productModel->getProducts();
+        return $this->viewApi->response($products, 200);
+      } 
+    }
+
       public function showProducts($params = NULL) {
         $ID_producto = $params[':ID'];
         $products  = $this->model->getProductById($ID_producto);
         if($products)
-            $this->view->response($products);
+            $this->view->response($products, 200);
         else 
             $this->view->response("El producto buscado con el id=$ID_producto no existe", 404);
       }
 
-      // FUNCION PARA AGREGAR PRODUCTO
-      public function addProduct($params = NULL){ 
+      public function addProduct($params = NULL){ //añadir un nuevo campeon
+        
         $productsbyid = $this->getData();  
+        
         if( empty($productsbyid->ID_categoria_fk) || empty($productsbyid->TIPO)|| empty($productsbyid->TALLE)|| empty($productsbyid->PRECIO)){
             $this->view->response("Complete los datos", 400);
         }
         else {
             $ID_producto = $this->model->insertProduct($productsbyid->ID_categoria_fk, $productsbyid->TIPO, $productsbyid->TALLE, $productsbyid->PRECIO);
             $productsbyid = $this->model->getProductById($ID_producto);
-            $this->view->response("el producto con el id=$ID_producto se agregó correctamente", 201);
+            $this->view->response("El producto se agregó correctamente", 201);
         }
       }
 
-      // FUNCION BORRAR PRODUCTO
+
       public function deleteProduct($params = NULL) {
         $ID_producto = $params[':ID'];
+      
         $products  = $this->model->getProductById($ID_producto);
       if($products){
         $this->model->deleteProduct($ID_producto);
-        $this->view->response("el producto con el id=$ID_producto se elimino correctamente", 200);
+        $this->view->response("el producto con el id=$ID_producto se eliminó correctamente", 200);
       }
       else
         $this->view->response("el producto con el id=$ID_producto no existe", 404);
       }
 
-      // FUNCION ACTUALIZAR PRODUCTO
         public function updateProduct($params = null){
           $ID_producto = $params[':ID'];
           $product = $this->model->getProductById($ID_producto);
