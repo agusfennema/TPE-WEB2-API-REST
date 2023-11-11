@@ -36,7 +36,7 @@ class productController {
       } 
     }
 
-      public function showProducts($params = NULL) {
+      public function showProductById($params = NULL) {
         $ID_producto = $params[':ID'];
         $products  = $this->productModel->getProductById($ID_producto);
         if($products)
@@ -45,7 +45,7 @@ class productController {
             $this->viewApi->response("El producto buscado con el id=$ID_producto no existe", 404);
       }
 
-      public function addProduct($params = NULL){ 
+      public function addProduct($params = NULL){ //añadir un nuevo campeon
         
         $productsbyid = $this->getData();  
         
