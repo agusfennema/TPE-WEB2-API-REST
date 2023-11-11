@@ -45,7 +45,7 @@ class productController {
             $this->view->response("El producto buscado con el id=$ID_producto no existe", 404);
       }
 
-      public function addProduct($params = NULL){ //añadir un nuevo campeon
+      public function addProduct($params = NULL){ 
         
         $productsbyid = $this->getData();  
         
