@@ -14,9 +14,10 @@ Verbo DELETE: http://localhost/tp2-apirest/api/products
 
 Endpoint POST
 Verbo POST: http://localhost/tp2-apirest/api/products
+(no es necesario agregar un ID_producto ya que al ser autoincremental lo hace automaticamente)
 
 Endpoint PUT
-Verbo PUT: http://localhost/tp2-apirest/api/products
+Verbo PUT: http://localhost/tp2-apirest/api/products/id
 
 Obtener por ASC o DESC
 http://localhost/tp2-apirest/api/products/?sortby=ID_producto&order=DESC
