@@ -1,4 +1,3 @@
-API REST para el recurso de products
 Una API REST sencilla para manejar un CRUD de products
 
 Importar la base de datos
