@@ -1,35 +1,54 @@
-Una API REST sencilla para manejar un CRUD de products
+API REST para Gestión de Productos
+Esta API proporciona funcionalidades CRUD (Crear, Leer, Actualizar y Eliminar) para administrar productos de una tienda. Utiliza PHP y MySQL para manejar las operaciones.
 
-Importar la base de datos
-importar desde PHPMyAdmin (o cualquiera) database/tienda.sql
-Pueba con postman
-El endpoint de la API es: http://localhost/tp2-apirest/api/products
+Importar la Base de Datos
+Crea una base de datos llamada tienda en MySQL.
+Importa la estructura y datos desde el archivo tienda.sql mediante PHPMyAdmin u otra herramienta similar.
+Endpoints
 
--Endpoint GET por id
-El endpoint por ID es: http://localhost/tp2-apirest/api/products/id
+Obtener Todos los Productos
+Descripción: Obtiene todos los productos.
+Método: GET
+Endpoint: http://localhost/tp2-apirest/api/products
 
--Endpoint DELETE
-Verbo DELETE: http://localhost/tp2-apirest/api/products
+Obtener Producto por ID
+Descripción: Obtiene un producto por su ID.
+Método: GET
+Endpoint: http://localhost/tp2-apirest/api/products/{id}
 
--Endpoint POST
-Verbo POST: http://localhost/tp2-apirest/api/products
-(no es necesario agregar un ID_producto ya que al ser autoincremental lo hace automaticamente)
+Eliminar Producto
+Descripción: Elimina un producto por su ID.
+Método: DELETE
+Endpoint: http://localhost/tp2-apirest/api/products/{id}
 
--Endpoint PUT
-Verbo PUT: http://localhost/tp2-apirest/api/products/id
+Crear Producto
+Descripción: Crea un nuevo producto.
+Método: POST
+Endpoint: http://localhost/tp2-apirest/api/products
+Body (JSON):
 
--Obtener por ASC o DESC
+{
+    "TIPO": "Tipo del producto",
+    "TALLE": "Talle del producto",
+    "PRECIO": "Precio del producto"
+}
+
+Actualizar Producto
+Descripción: Actualiza un producto por su ID.
+Método: PUT
+Endpoint: http://localhost/tp2-apirest/api/products/{id}
+Body (JSON):
+{
+    "TIPO": "Nuevo tipo",
+    "TALLE": "Nuevo talle",
+    "PRECIO": "Nuevo precio"
+}
+
+Ordenar Productos
+Descripción: Obtiene productos ordenados por columna y dirección.
+Método: GET
+Endpoint: http://localhost/tp2-apirest/api/products/?sortby={columna}&order={ASC o DESC}
+Ejemplos:
 http://localhost/tp2-apirest/api/products/?sortby=ID_producto&order=DESC
-http://localhost/tp2-apirest/api/products/?sortby=ID_producto&order=ASC
-
--Obtener por ASC o DESC de TIPO
 http://localhost/tp2-apirest/api/products/?sortby=TIPO&order=ASC
-http://localhost/tp2-apirest/api/products/?sortby=TIPO&order=DESC
-
--Obtener por ASC o DESC de TALLE
-http://localhost/tp2-apirest/api/products/?sortby=TALLE&order=ASC
-http://localhost/tp2-apirest/api/products/?sortby=TALLE&order=DESC
-
--Obtener por ASC o DESC de PRECIO
-http://localhost/tp2-apirest/api/products/?sortby=PRECIO&order=ASC
 http://localhost/tp2-apirest/api/products/?sortby=PRECIO&order=DESC
