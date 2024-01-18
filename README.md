@@ -57,5 +57,3 @@ Esta API proporciona funcionalidades **CRUD** (Crear, Leer, Actualizar y Elimina
         - `http://localhost/tp2-apirest/api/products/?sortby=ID_producto&order=DESC`
         - `http://localhost/tp2-apirest/api/products/?sortby=TIPO&order=ASC`
         - `http://localhost/tp2-apirest/api/products/?sortby=PRECIO&order=DESC`
-
-Recuerda que para implementar esto en PHP, necesitarás utilizar un framework o escribir tu propio código para manejar las peticiones HTTP y acceder a la base de datos. Puedes utilizar librerías como PDO para interactuar con MySQL desde PHP.
